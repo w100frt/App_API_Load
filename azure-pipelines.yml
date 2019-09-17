@@ -37,22 +37,3 @@ steps:
   displayName: 'Publish Test Results **/postmanResults.xml'
   inputs:
     testResultsFiles: '**/postmanResults.xml'
-
-- script: |
-   npm install -g artillery
-   
-  displayName: 'Install Artillery'
-
-- script: |
-   artillery run -e staging -o report.json test.yml
-   
-  displayName: 'Run Tests'
-
-- task: PublishPipelineArtifact@1
-  displayName: 'Publish Pipeline Artifact'
-  inputs:
-    targetPath: '$(System.DefaultWorkingDirectory)'
-    artifact: report.json
-  enabled: false
-
-
