@@ -7,28 +7,34 @@ trigger:
 - master
 
 pool:
-  vmImage: 'windows-latest'
-
-variables:
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
+  name: Hosted
+  demands: npm
 
 steps:
-- task: NuGetToolInstaller@1
-
-- task: NuGetCommand@2
+- task: Npm@1
+  displayName: 'npm custom'
   inputs:
-    restoreSolution: '$(solution)'
+    command: custom
+    verbose: false
+    customCommand: 'install -g newman'
 
-- task: VSBuild@1
+- task: carlowahlstedt.NewmanPostman.NewmanPostman.NewmanPostman@4
+  displayName: 'Newman - Postman'
   inputs:
-    solution: '$(solution)'
-    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    collectionFileSource: 'App_API_Automation.json'
+    environment: 'Staging.postman_environment.json'
+    ignoreRedirect: false
+    bail: false
+    sslInsecure: false
+    reporters: junit
+    htmlExtraDarkTheme: false
+    htmlExtraLogs: false
+    htmlExtraTestPaging: false
+    reporterJUnitExport: postmanResults.xml
+  continueOnError: true
 
-- task: VSTest@2
+- task: PublishTestResults@2
+  displayName: 'Publish Test Results **/postmanResults.xml'
   inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    testResultsFiles: '**/postmanResults.xml'
+
