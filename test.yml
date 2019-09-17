@@ -14,6 +14,9 @@ config:
       phases: 
         - duration: 10
           arrivalRate: 100
+  variables: 
+    apikey:
+      - '?apikey=jE7yBJVRNAwdDesMgTzTXUUSx1It41Fq'
 scenarios:
   - name: MLB Scoreboard Main
     flow:
