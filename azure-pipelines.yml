@@ -2,7 +2,7 @@ pool:
   name: Default
 steps:
 - script: |
-   npm install -g artillery
+   sudo npm install -g artillery
    
   displayName: 'Install Artillery'
 
