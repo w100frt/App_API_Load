@@ -2,13 +2,13 @@ config:
   target: 'http://test.api.foxsports.com/sportsdata/v1'
   phases:
     - duration: 1
-      arrivalRate: 1000
+      arrivalRate: 100
   environments:
     production: 
       target: 'http://api.foxsports.com/sportsdata/v1'
       phases: 
         - duration: 1
-          arrivalRate: 10
+          arrivalRate: 100
     staging: 
       target: 'http://fsapp-qa-public-loadbalancer-579034957.us-east-1.elb.amazonaws.com/v1'
       phases: 
