@@ -1,5 +1,5 @@
 pool:
-  name: Default
+  name: Hosted
 steps:
 - script: |
    npm install -g artillery
