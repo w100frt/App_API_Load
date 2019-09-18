@@ -16,6 +16,6 @@ steps:
   inputs:
     targetPath: '$(System.DefaultWorkingDirectory)'
     artifact: report.json
-  enabled: false
+  enabled: true
 
 
