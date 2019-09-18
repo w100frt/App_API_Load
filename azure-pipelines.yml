@@ -7,15 +7,19 @@ steps:
   displayName: 'Install Artillery'
 
 - script: |
-   artillery run -e staging -o report.json.html test.yml
+   artillery run -e staging -o report.json test.yml
    
   displayName: 'Run Tests'
 
+- script: |
+    artillery report report.json
+
+  displayName: 'Convert report'
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Pipeline Artifact'
   inputs:
     targetPath: '$(System.DefaultWorkingDirectory)'
-    artifact: report.json.html
+    artifact: report.json
   enabled: true
 
 
