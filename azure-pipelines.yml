@@ -22,4 +22,8 @@ steps:
     artifact: report.json
   enabled: true
 
+- task: PublishTestResults@2
+  displayName: 'Publish Test Results report.json'
+  inputs:
+    testResultsFiles: report.json
 
