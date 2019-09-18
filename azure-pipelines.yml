@@ -7,7 +7,7 @@ steps:
   displayName: 'Install Artillery'
 
 - script: |
-   artillery run -e staging -o report.json test.yml
+   artillery run -e staging -o report.json.html test.yml
    
   displayName: 'Run Tests'
 
@@ -15,7 +15,7 @@ steps:
   displayName: 'Publish Pipeline Artifact'
   inputs:
     targetPath: '$(System.DefaultWorkingDirectory)'
-    artifact: report.json
+    artifact: report.json.html
   enabled: true
 
 
