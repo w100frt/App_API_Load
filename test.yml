@@ -19,7 +19,19 @@ config:
       - '?apikey=jE7yBJVRNAwdDesMgTzTXUUSx1It41Fq'
 scenarios:
   - name: MLB Scoreboard Main
+    weight: 50
     flow:
       - get:
           url: "/mlb/scoreboard/main"
+  - name: MLB Scoreboard Today
+    weight: 30
+    flow:
+      - get:
+          url: "/mlb/scoreboard/segment/20190920"
+  - name: MLB Score Chip
+    weight: 20
+    flow:
+      - get:
+          url: "/mlb/scorechip/mlb78406"
+  
 
