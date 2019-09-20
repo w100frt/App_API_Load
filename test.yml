@@ -1,13 +1,13 @@
 config:
   target: 'http://test.api.foxsports.com/sportsdata/v1'
   phases:
-    - duration: 1
+    - duration: 10
       arrivalRate: 100
   environments:
     production: 
       target: 'http://api.foxsports.com/sportsdata/v1'
       phases: 
-        - duration: 1
+        - duration: 10
           arrivalRate: 100
     staging: 
       target: 'http://fsapp-qa-public-loadbalancer-579034957.us-east-1.elb.amazonaws.com/v1'
@@ -19,19 +19,15 @@ config:
       - '?apikey=jE7yBJVRNAwdDesMgTzTXUUSx1It41Fq'
 scenarios:
   - name: MLB Scoreboard Main
-    weight: 50
+    weight: 75
     flow:
       - get:
           url: "/mlb/scoreboard/main"
   - name: MLB Scoreboard Today
-    weight: 30
+    weight: 25
     flow:
       - get:
           url: "/mlb/scoreboard/segment/20190920"
-  - name: MLB Score Chip
-    weight: 20
-    flow:
-      - get:
-          url: "/mlb/scorechip/mlb78406"
+
   
 
