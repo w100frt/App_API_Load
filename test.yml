@@ -10,7 +10,7 @@ config:
         - duration: 10
           arrivalRate: 100
     staging: 
-      target: 'http://fsapp-qa-public-loadbalancer-579034957.us-east-1.elb.amazonaws.com/v1'
+      target: 'http://fsapp-integration-public-537093566.us-east-1.elb.amazonaws.com/v1'
       phases: 
         - duration: 10
           arrivalRate: 100
