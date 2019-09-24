@@ -8,7 +8,7 @@ steps:
 
 - script: |
    artillery run -e staging -o report.json test.yml
-   
+  failOnStderr: true 
   displayName: 'Run Tests'
 
 - script: |
