@@ -19,15 +19,25 @@ config:
       - '?apikey=jE7yBJVRNAwdDesMgTzTXUUSx1It41Fq'
 scenarios:
   - name: MLB Scoreboard Main
-    weight: 75
+    weight: 40
     flow:
       - get:
           url: "/mlb/scoreboard/main"
   - name: MLB Scoreboard Today
-    weight: 25
+    weight: 10
     flow:
       - get:
-          url: "/mlb/scoreboard/segment/20190920"
+          url: "/mlb/scoreboard/segment/20190924"
+  - name: NFL Scoreboard Main
+    weight: 40
+    flow:
+      - get:
+          url: "/nfl/scoreboard/main"
+  - name: NFL Scoreboard Week
+    weight: 10
+    flow:
+      - get:
+          url: "/nfl/scoreboard/segment/w3"
 
   
 
