@@ -22,3 +22,12 @@ steps:
     artifact: report.json
   enabled: true
 
+- task: DownloadPipelineArtifact@2
+  inputs:
+    buildType: 'specific'
+    project: 'd0a0b220-4a56-4bb1-aa8d-4ad1b15d371f'
+    definition: '289'
+    buildVersionToDownload: 'specific'
+    pipelineId: '23257'
+    artifactName: 'report.json'
+    targetPath: '$(Pipeline.Workspace)'
