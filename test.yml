@@ -40,7 +40,7 @@ scenarios:
     weight: 10
     flow:
       - get:
-          url: "/nfl/scoreboard/segment/week"
+          url: "/nfl/scoreboard/segment/w3"
 
   
 
