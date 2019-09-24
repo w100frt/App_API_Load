@@ -3,17 +3,20 @@ config:
   phases:
     - duration: 10
       arrivalRate: 10
+      rampTo: 50
   environments:
     production: 
       target: 'http://api.foxsports.com/sportsdata/v1'
       phases: 
         - duration: 10
           arrivalRate: 10
+          rampTo: 50
     staging: 
       target: 'http://fsapp-integration-public-537093566.us-east-1.elb.amazonaws.com/v1'
       phases: 
         - duration: 10
           arrivalRate: 10
+          rampTo: 50
   variables: 
     apikey:
       - '?apikey=jE7yBJVRNAwdDesMgTzTXUUSx1It41Fq'
