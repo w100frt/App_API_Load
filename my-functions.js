@@ -12,7 +12,7 @@ const fs = require('fs');
   function logBody(requestParams, response, context, ee, next) {
 console.log(response.body);
       let body=response.body+"\r\n"; //this enabled new line in windows , use \n for linux
-	fs.appendFile('temp.json', body, function(err, body){
+	fs.appendFile('temp.txt', body, function(err, body){
     if (err) console.log(err);
     //console.log("Successfully Written to File.");
 	});
