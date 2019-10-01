@@ -7,7 +7,7 @@ steps:
   displayName: 'Install Artillery'
 
 - script: |
-   DEBUG=http* artillery run -e staging -o artillery_results test.yml
+   set DEBUG=http* artillery run -e staging -o artillery_results test.yml
   failOnStderr: true 
   displayName: 'Run Tests'
 
