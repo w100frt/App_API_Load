@@ -7,6 +7,11 @@ steps:
   displayName: 'Install Artillery'
 
 - script: |
+   npm install -g fs
+   
+  displayName: 'Install fs'
+
+- script: |
    set DEBUG=http:capture
    artillery run -e staging -o artillery_results test.yml > log.txt
   displayName: 'Run Tests'
