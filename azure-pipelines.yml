@@ -7,6 +7,11 @@ steps:
   displayName: 'Install Artillery'
 
 - script: |
+   set DEBUG=http:response
+  failOnStderr: true 
+  displayName: 'Run Tests'
+
+- script: |
    artillery run -e staging -o artillery_results test.yml > log.txt
   failOnStderr: true 
   displayName: 'Run Tests'
