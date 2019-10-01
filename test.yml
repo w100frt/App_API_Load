@@ -32,39 +32,45 @@ scenarios:
   - name: MLB Scoreboard Main
     weight: 18
     flow:
-      - log: "MLB_Scoreboard_Main_Log"
       - get:
           url: "/mlb/scoreboard/main"
+          expect:
+            - statusCode: 200
   - name: MLB Scoreboard Today
     weight: 8
     flow:
-      - log: "MLB_Scoreboard_Today_Log"
       - get:
           url: "/mlb/scoreboard/segment/20190924"
+          expect:
+            - statusCode: 200
   - name: NFL Scoreboard Main
     weight: 18
     flow:
-      - log: "NFL_Scoreboard_Main_Log"
       - get:
           url: "/nfl/scoreboard/main"
+          expect:
+            - statusCode: 200
   - name: NFL Scoreboard Week
     weight: 8
     flow:
-      - log: "NFL_Scoreboard_Week_Log"
       - get:
           url: "/nfl/scoreboard/segment/{{ nflWeek }}"
+          expect:
+            - statusCode: 200
   - name: CFB Scoreboard Main
     weight: 18
     flow:
-      - log: "CFB_Scoreboard_Main_Log"
       - get:
           url: "/nfl/scoreboard/main"
+          expect:
+            - statusCode: 200
   - name: CFB Scoreboard Week
     weight: 8
     flow:
-      - log: "CFB_Scoreboard_Week_Log"
       - get:
           url: "/nfl/scoreboard/segment/{{ cfbWeek }}"
+          expect:
+            - statusCode: 200
 
   
 
