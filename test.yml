@@ -32,6 +32,7 @@ scenarios:
   - name: MLB Scoreboard Main
     weight: 18
     flow:
+      - log: "httpLog"
       - get:
           url: "/mlb/scoreboard/main"
   - name: MLB Scoreboard Today
