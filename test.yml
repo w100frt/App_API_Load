@@ -48,7 +48,7 @@ scenarios:
     weight: 8
     flow:
       - get:
-          url: "/nfl/scoreboard/segment/"{{ nflWeek }}""
+          url: "/nfl/scoreboard/segment/{{ nflWeek }}"
   - name: CFB Scoreboard Main
     weight: 18
     flow:
@@ -58,7 +58,7 @@ scenarios:
     weight: 8
     flow:
       - get:
-          url: "/nfl/scoreboard/segment/"{{ cfbWeek }}""
+          url: "/nfl/scoreboard/segment/{{ cfbWeek }}"
 
   
 
