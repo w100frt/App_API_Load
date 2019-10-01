@@ -7,7 +7,7 @@ steps:
   displayName: 'Install Artillery'
 
 - script: |
-   set DEBUG:http:capture
+   set DEBUG=http:capture
    artillery run -e staging -o artillery_results test.yml > log.txt
   displayName: 'Run Tests'
 
