@@ -13,7 +13,7 @@ steps:
 
 - script: |
    set DEBUG=http:capture
-   artillery run -e staging -o artillery_results test.yml > log.txt
+   artillery run -e staging -o artillery_results test.yml
   displayName: 'Run Tests'
 
 - script: |
