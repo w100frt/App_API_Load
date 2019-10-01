@@ -17,6 +17,8 @@ config:
         - duration: 10
           arrivalRate: 10
           rampTo: 50
+   processor: "my-functions.js"
+   
   config:
     payload:
       # path is relative to the location of the test script
@@ -34,43 +36,37 @@ scenarios:
     flow:
       - get:
           url: "/mlb/scoreboard/main"
-          expect:
-            - statusCode: 200
+          afterResponse: "logBody"
+
   - name: MLB Scoreboard Today
     weight: 8
     flow:
       - get:
           url: "/mlb/scoreboard/segment/20190924"
-          expect:
-            - statusCode: 200
+          afterResponse: "logBody"
   - name: NFL Scoreboard Main
     weight: 18
     flow:
       - get:
           url: "/nfl/scoreboard/main"
-          expect:
-            - statusCode: 200
+          afterResponse: "logBody"
   - name: NFL Scoreboard Week
     weight: 8
     flow:
       - get:
           url: "/nfl/scoreboard/segment/{{ nflWeek }}"
-          expect:
-            - statusCode: 200
+          afterResponse: "logBody"
   - name: CFB Scoreboard Main
     weight: 18
     flow:
       - get:
           url: "/nfl/scoreboard/main"
-          expect:
-            - statusCode: 200
+          afterResponse: "logBody"
   - name: CFB Scoreboard Week
     weight: 8
     flow:
       - get:
           url: "/nfl/scoreboard/segment/{{ cfbWeek }}"
-          expect:
-            - statusCode: 200
-
+          afterResponse: "logBody"
   
 
