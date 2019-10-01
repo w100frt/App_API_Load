@@ -32,32 +32,37 @@ scenarios:
   - name: MLB Scoreboard Main
     weight: 18
     flow:
-      - log: "httpLog"
+      - log: "MLB_Scoreboard_Main_Log"
       - get:
           url: "/mlb/scoreboard/main"
   - name: MLB Scoreboard Today
     weight: 8
     flow:
+      - log: "MLB_Scoreboard_Today_Log"
       - get:
           url: "/mlb/scoreboard/segment/20190924"
   - name: NFL Scoreboard Main
     weight: 18
     flow:
+      - log: "NFL_Scoreboard_Main_Log"
       - get:
           url: "/nfl/scoreboard/main"
   - name: NFL Scoreboard Week
     weight: 8
     flow:
+      - log: "NFL_Scoreboard_Week_Log"
       - get:
           url: "/nfl/scoreboard/segment/{{ nflWeek }}"
   - name: CFB Scoreboard Main
     weight: 18
     flow:
+      - log: "CFB_Scoreboard_Main_Log"
       - get:
           url: "/nfl/scoreboard/main"
   - name: CFB Scoreboard Week
     weight: 8
     flow:
+      - log: "CFB_Scoreboard_Week_Log"
       - get:
           url: "/nfl/scoreboard/segment/{{ cfbWeek }}"
 
