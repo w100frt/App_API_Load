@@ -1,12 +1,12 @@
 config:
-  target: 'http://test.api.foxsports.com/sportsdata/v1'
+  target: 'http://fsapp-integration-public-537093566.us-east-1.elb.amazonaws.com/v1'
   phases:
     - duration: 10
       arrivalRate: 10
       rampTo: 50
   environments:
-    production: 
-      target: 'http://api.foxsports.com/sportsdata/v1'
+    integration: 
+      target: 'http://fsapp-integration-public-537093566.us-east-1.elb.amazonaws.com/v1'
       phases: 
         - duration: 10
           arrivalRate: 10
@@ -17,30 +17,48 @@ config:
         - duration: 10
           arrivalRate: 10
           rampTo: 50
+  config:
+    payload:
+      # path is relative to the location of the test script
+      path: "payload.csv"
+      fields:
+        - "nflWeek"
+        - "cfbWeek"
+        - "conference"
   variables: 
     apikey:
       - '?apikey=jE7yBJVRNAwdDesMgTzTXUUSx1It41Fq'
 scenarios:
   - name: MLB Scoreboard Main
-    weight: 40
+    weight: 18
     flow:
       - get:
           url: "/mlb/scoreboard/main"
   - name: MLB Scoreboard Today
-    weight: 10
+    weight: 8
     flow:
       - get:
           url: "/mlb/scoreboard/segment/20190924"
   - name: NFL Scoreboard Main
-    weight: 40
+    weight: 18
     flow:
       - get:
           url: "/nfl/scoreboard/main"
   - name: NFL Scoreboard Week
-    weight: 10
+    weight: 8
     flow:
       - get:
-          url: "/nfl/scoreboard/segment/w3"
+          url: "/nfl/scoreboard/segment/"{{ nflWeek }}""
+  - name: CFB Scoreboard Main
+    weight: 18
+    flow:
+      - get:
+          url: "/nfl/scoreboard/main"
+  - name: CFB Scoreboard Week
+    weight: 8
+    flow:
+      - get:
+          url: "/nfl/scoreboard/segment/"{{ cfbWeek }}""
 
   
 
