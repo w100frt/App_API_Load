@@ -9,7 +9,7 @@ const fs = require('fs');
     return next(); // MUST be called for the scenario to continue
   }
 
-  function logBody(response, context, ee, next) {
+  function logBody(requestParams, response, context, ee, next) {
 console.log(response.body);
       let body=response.body+"\r\n"; //this enabled new line in windows , use \n for linux
 	fs.appendFile('testLogs.txt', body, function(body, err){
