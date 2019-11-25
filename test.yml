@@ -1,5 +1,5 @@
 config:
-  target: 'http://fsapp-integration-public-537093566.us-east-1.elb.amazonaws.com/v1'
+  target: 'http://fsapp-qa-public-492644656.us-east-1.elb.amazonaws.com/v1'
   processor: "my-functions.js"
   phases:
     - duration: 10
@@ -13,7 +13,7 @@ config:
           arrivalRate: 10
           rampTo: 50
     staging: 
-      target: 'http://fsapp-integration-public-537093566.us-east-1.elb.amazonaws.com/v1'
+      target: 'http://fsapp-qa-public-492644656.us-east-1.elb.amazonaws.com/v1'
       phases: 
         - duration: 10
           arrivalRate: 10
@@ -33,41 +33,20 @@ config:
       - '?apikey=jE7yBJVRNAwdDesMgTzTXUUSx1It41Fq'
 scenarios:
   - name: MLB Scoreboard Main
-    weight: 18
+    weight: 50
     flow:
       - get:
           url: "/mlb/scoreboard/main"
-          afterResponse: "logBody"
 
   - name: MLB Scoreboard Today
-    weight: 8
+    weight: 25
     flow:
       - get:
           url: "/mlb/scoreboard/segment/20190924"
-          afterResponse: "logBody"
-  - name: NFL Scoreboard Main
-    weight: 18
-    flow:
-      - get:
-          url: "/nfl/scoreboard/main"
-          afterResponse: "logBody"
-  - name: NFL Scoreboard Week
-    weight: 8
-    flow:
-      - get:
-          url: "/nfl/scoreboard/segment/{{ nflWeek }}"
-          afterResponse: "logBody"
-  - name: CFB Scoreboard Main
-    weight: 18
-    flow:
-      - get:
-          url: "/nfl/scoreboard/main"
-          afterResponse: "logBody"
-  - name: CFB Scoreboard Week
-    weight: 8
-    flow:
-      - get:
-          url: "/nfl/scoreboard/segment/{{ cfbWeek }}"
-          afterResponse: "logBody"
   
-
+  - name: MLB Scoreboard Scorechip
+    weight: 25
+    flow:
+      - get:
+          url: "/mlb/scorechip/mlb74496"
+  
