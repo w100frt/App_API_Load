@@ -13,7 +13,7 @@ config:
           arrivalRate: 10
           rampTo: 50
     staging: 
-      target: 'http://fsapp-qa-public-492644656.us-east-1.elb.amazonaws.com/v1'
+      target: 'https://test.api.foxsports.com/bifrost.qa/v1'
       phases: 
         - duration: 10
           arrivalRate: 10
@@ -36,17 +36,17 @@ scenarios:
     weight: 50
     flow:
       - get:
-          url: "/mlb/scoreboard/main"
+          url: "/mlb/scoreboard/main?apikey=SuNgfBgmTGS2xozZbnV6FcjGGRQrR8cg"
 
   - name: MLB Scoreboard Today
     weight: 25
     flow:
       - get:
-          url: "/mlb/scoreboard/segment/20190924"
+          url: "/mlb/scoreboard/segment/20190924?apikey=SuNgfBgmTGS2xozZbnV6FcjGGRQrR8cg"
   
   - name: MLB Scoreboard Scorechip
     weight: 25
     flow:
       - get:
-          url: "/mlb/scorechip/mlb74496"
+          url: "/mlb/scorechip/mlb74496?apikey=SuNgfBgmTGS2xozZbnV6FcjGGRQrR8cg"
   
