@@ -1,5 +1,5 @@
 pool:
-  name: QA-PC2
+  name: QA-PC
 steps:
 - script: |
    npm install -g artillery
