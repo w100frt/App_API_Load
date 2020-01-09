@@ -16,10 +16,6 @@ steps:
    artillery run -e staging -o artillery_results test.yml
   displayName: 'Run Tests'
 
-- script: |
-    artillery report artillery_results
-
-  displayName: 'Convert report'
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Pipeline Artifact'
   inputs:
