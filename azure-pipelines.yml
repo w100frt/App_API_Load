@@ -1,5 +1,5 @@
 pool:
-  name: QA-PC
+  name: QA-MacOS
 steps:
 - script: |
    npm install -g artillery
