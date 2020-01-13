@@ -18,6 +18,7 @@ steps:
 
 - script: |	
     artillery report artillery_results	
+    exit
   displayName: 'Convert report'
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Pipeline Artifact'
