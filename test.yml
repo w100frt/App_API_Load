@@ -37,9 +37,15 @@ scenarios:
           url: "/mlb/scoreboard/main?apikey=SuNgfBgmTGS2xozZbnV6FcjGGRQrR8cg"
 
   - name: MLB Scoreboard Today
-    weight: 50
+    weight: 25
     flow:
       - get:
           url: "/mlb/scoreboard/segment/20190924?apikey=SuNgfBgmTGS2xozZbnV6FcjGGRQrR8cg"
+  
+  - name: MLB Scorechip
+    weight: 25
+    flow:
+      - get:
+          url: "/mlb/scorechip/mlb74496?apikey=SuNgfBgmTGS2xozZbnV6FcjGGRQrR8cg"
  
   
